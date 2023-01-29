@@ -37,10 +37,21 @@ module stimulus ();
    initial 
      begin      
 	#0  reset_b = 1'b0;
-	#12 reset_b = 1'b1;	
-	#0  In = 1'b0;
-	#20 In = 1'b1;
-	#20 In = 1'b0;
+
+	#12 reset_b = 1'b1;	//start of cycle. path 0210
+	#0  In = 1'b0; // input 0 got to s2
+	#20 In = 1'b1;//goes to state 1 
+	#20 In = 1'b0;//goes to state 0
+
+     #20 in = 1'b0;	//start of cycle. path 002210
+	#20  In = 1'b0; //goes to state 0
+	#20 In = 1'b1;//goes to state  2
+	#20 In = 1'b1;//goes to state 2
+	#20 In = 1'b0;//goes to state 1 
+	#20 In = 1'b1;//goes to state 0
+
+
+
      end
 
 endmodule // FSM_tb
