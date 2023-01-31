@@ -11,18 +11,18 @@ z2
 cModel Technology
 Z0 dC:/Users/josep/OneDrive/Documents/Spring 2023/4243 computer arch/Ecen_4243/lab0
 T_opt
-Z1 !s110 1675136150
-V]2Fo15DcW28aM0n`Ed^Xo3
+!s110 1675139265
+VRaDeKed=2Rdi9TOl>c>d;1
 04 10 4 work regfile_tb fast 0
-=1-4074e06399d0-63d88c96-297-6290
+=1-4074e06399d0-63d898c0-305-6118
 !s124 OEM100
 o-quiet -auto_acc_if_foreign -work work +acc
-Z2 tCvgOpt 0
+Z1 tCvgOpt 0
 n@_opt
 OL;O;2021.1;73
 vregfile
-Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-R1
+Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z3 !s110 1675139264
 !i10b 1
 !s100 NV22dn=8439[cSkfTcNob2
 IK`2:TmK8e6BU0W7zdma[K3
@@ -38,25 +38,25 @@ Z5 OL;L;2021.1;73
 r1
 !s85 0
 31
-Z6 !s108 1675136150.000000
+Z6 !s108 1675139264.000000
 Z7 !s107 regfile_tb.sv|regfile.sv|
 Z8 !s90 -reportprogress|300|regfile.sv|regfile_tb.sv|
 !i113 0
 Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R2
-vregfile_tb
-R3
 R1
+vregfile_tb
+R2
+R3
 !i10b 1
-!s100 51D2QGf1D758d4i1YfL][0
-IFn;[_=M1OFHH=Qmf2@TZJ1
+!s100 `c^1K5hAcjJ]`cd:Q_]gD0
+IJmP1[P^XKX<W;TK?6ibgS2
 S1
 R0
-w1675135799
+w1675139246
 8regfile_tb.sv
 Fregfile_tb.sv
 !i122 0
-L0 4 76
+L0 4 78
 R4
 R5
 r1
@@ -67,4 +67,4 @@ R7
 R8
 !i113 0
 R9
-R2
+R1

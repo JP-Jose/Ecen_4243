@@ -13,20 +13,37 @@
 # //
 # do regfile.do
 # Model Technology ModelSim SE-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
-# Start time: 21:35:50 on Jan 30,2023
+# Start time: 22:27:44 on Jan 30,2023
 # vlog -reportprogress 300 regfile.sv regfile_tb.sv 
 # -- Compiling module regfile
 # -- Compiling module regfile_tb
 # 
 # Top level modules:
 # 	regfile_tb
-# End time: 21:35:50 on Jan 30,2023, Elapsed time: 0:00:00
+# End time: 22:27:44 on Jan 30,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -voptargs="+acc" work.regfile_tb 
-# Start time: 21:35:50 on Jan 30,2023
+# Start time: 22:27:44 on Jan 30,2023
 # ** Note: (vsim-3812) Design is being optimized...
 # Loading sv_std.std
 # Loading work.regfile_tb(fast)
 # Loading work.regfile(fast)
-# ** Warning: (vsim-3015) [PCDPC] - Port size (5) does not match connection size (1) for port 'ra1'. The port definition is at: regfile.sv(7).
-#    Time: 0 ns  Iteration: 0  Instance: /regfile_tb/mut File: regfile_tb.sv Line: 22
+# .main_pane.list.interior.cs.body
+# .main_pane.wave.interior.cs.body.pw.wf
+# ** UI-Msg: (vish-4014) No objects found matching '/regfile_tb/mut/mips/dp/rf/*'.
+# Error in macro ./regfile.do line 51
+# ** UI-Msg: (vish-4014) No objects found matching '/regfile_tb/mut/mips/dp/rf/*'.
+#     while executing
+# "add wave -noupdate -divider -height 32 "Register File""
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# End time: 23:28:10 on Jan 30,2023, Elapsed time: 1:00:26
+# Errors: 0, Warnings: 0

@@ -22,12 +22,27 @@ module regfile_tb();
     regfile mut(
         .clk(clk),
         .we3(we3), 
-        .ra1(we3),
+        .ra1(ra1),
         .ra2(ra2),
         .wa3(wa3), 
         .wd3(wd3),
         .rd1(rd1),
         .rd2(rd2) );
+
+  initial
+     begin
+	// Gives output file name
+	handle3 = $fopen("test.out");
+	// Tells when to finish simulation
+	#3500 $finish;		
+     end
+
+    always 
+        begin
+        desc3 = handle3;
+        #5 $fdisplay(desc3, "%d %d || %d", 
+        we3, rd1, rd2);
+        end   
 
     //program initial setting
     initial
@@ -58,22 +73,9 @@ module regfile_tb();
         // Randomize write data
         wd3 = $urandom;
     end
-    /*
-    initial
-     begin
-	// Gives output file name
-	handle3 = $fopen("test.out");
-	// Tells when to finish simulation
-	#3500 $finish;		
-     end
-
-    always 
-        begin
-        desc3 = handle3;
-        #5 $fdisplay(desc3, "%d %32'd0 || %32'd0", 
-        we3, rd1, rd2);
-        end  
-    */ 
+    
+  
+    
    
 
 endmodule
