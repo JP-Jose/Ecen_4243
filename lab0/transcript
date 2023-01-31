@@ -11,17 +11,22 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# do FSM.do
+# do regfile.do
 # Model Technology ModelSim SE-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
-# Start time: 22:47:50 on Jan 28,2023
-# vlog -reportprogress 300 FSM.sv FSM_tb.sv 
-# -- Compiling module FSM
-# -- Compiling module stimulus
-# ** Error: FSM_tb.sv(46): (vlog-2730) Undefined variable: 'in'.
-# End time: 22:47:50 on Jan 28,2023, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# ** Error: C:/modeltech64_2021.1/win64/vlog failed.
-# Error in macro ./FSM.do line 30
-# C:/modeltech64_2021.1/win64/vlog failed.
-#     while executing
-# "vlog FSM.sv FSM_tb.sv"
+# Start time: 21:35:50 on Jan 30,2023
+# vlog -reportprogress 300 regfile.sv regfile_tb.sv 
+# -- Compiling module regfile
+# -- Compiling module regfile_tb
+# 
+# Top level modules:
+# 	regfile_tb
+# End time: 21:35:50 on Jan 30,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.regfile_tb 
+# Start time: 21:35:50 on Jan 30,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.regfile_tb(fast)
+# Loading work.regfile(fast)
+# ** Warning: (vsim-3015) [PCDPC] - Port size (5) does not match connection size (1) for port 'ra1'. The port definition is at: regfile.sv(7).
+#    Time: 0 ns  Iteration: 0  Instance: /regfile_tb/mut File: regfile_tb.sv Line: 22

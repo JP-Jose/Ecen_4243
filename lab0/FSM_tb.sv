@@ -24,7 +24,7 @@ module stimulus ();
 	// Gives output file name
 	handle3 = $fopen("test.out");
 	// Tells when to finish simulation
-	#500 $finish;		
+	#3500 $finish;		
      end
 
    always 
@@ -43,12 +43,12 @@ module stimulus ();
 	#20 In = 1'b1;//goes to state 1 
 	#20 In = 1'b0;//goes to state 0
 
-     #20 in = 1'b0;	//start of cycle. path 002210
-	#20  In = 1'b0; //goes to state 0
+     #20 In = 1'b0;	//start of cycle. 0 path 0022102
+	#20 In = 1'b0; //goes to state 2
 	#20 In = 1'b1;//goes to state  2
+	#20 In = 1'b1;//goes to state 1
+	#20 In = 1'b0;//goes to state 0 
 	#20 In = 1'b1;//goes to state 2
-	#20 In = 1'b0;//goes to state 1 
-	#20 In = 1'b1;//goes to state 0
 
 
 

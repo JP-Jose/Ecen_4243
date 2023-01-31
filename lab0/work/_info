@@ -1,6 +1,8 @@
 m255
 K4
 z2
+!s99 nomlopt
+!s11f vlog 2021.1 2021.01, Jan 19 2021
 13
 !s112 1.1
 !i10d 8192
@@ -8,28 +10,61 @@ z2
 !i10f 100
 cModel Technology
 Z0 dC:/Users/josep/OneDrive/Documents/Spring 2023/4243 computer arch/Ecen_4243/lab0
-vFSM
-DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-!s110 1674967670
+T_opt
+Z1 !s110 1675136150
+V]2Fo15DcW28aM0n`Ed^Xo3
+04 10 4 work regfile_tb fast 0
+=1-4074e06399d0-63d88c96-297-6290
+!s124 OEM100
+o-quiet -auto_acc_if_foreign -work work +acc
+Z2 tCvgOpt 0
+n@_opt
+OL;O;2021.1;73
+vregfile
+Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+R1
 !i10b 1
-!s100 ;9UlQO`CZ6V49mWLXegBc0
-IKe2XOFzb5ZN:LTcXS[dna2
+!s100 NV22dn=8439[cSkfTcNob2
+IK`2:TmK8e6BU0W7zdma[K3
 S1
 R0
-w1674966010
-8FSM.sv
-FFSM.sv
+w1675136136
+8regfile.sv
+Fregfile.sv
 !i122 0
-L0 1 41
-VDg1SIo80bB@j0V0VzS_@n1
-OL;L;2021.1;73
+L0 4 32
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+Z5 OL;L;2021.1;73
 r1
 !s85 0
 31
-!s108 1674967670.000000
-!s107 FSM_tb.sv|FSM.sv|
-!s90 -reportprogress|300|FSM.sv|FSM_tb.sv|
+Z6 !s108 1675136150.000000
+Z7 !s107 regfile_tb.sv|regfile.sv|
+Z8 !s90 -reportprogress|300|regfile.sv|regfile_tb.sv|
 !i113 0
-o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-tCvgOpt 0
-n@f@s@m
+Z9 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+vregfile_tb
+R3
+R1
+!i10b 1
+!s100 51D2QGf1D758d4i1YfL][0
+IFn;[_=M1OFHH=Qmf2@TZJ1
+S1
+R0
+w1675135799
+8regfile_tb.sv
+Fregfile_tb.sv
+!i122 0
+L0 4 76
+R4
+R5
+r1
+!s85 0
+31
+R6
+R7
+R8
+!i113 0
+R9
+R2
