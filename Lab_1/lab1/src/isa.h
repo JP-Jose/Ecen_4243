@@ -22,12 +22,6 @@
 //
 #define SIGNEXT(v, sb) ((v) | (((v) & (1 << (sb))) ? ~((1 << (sb))-1) : 0))
 
-
-
-
-
-
-
 // I Instructions
 int ADDI (int Rd, int Rs1, int Imm, int Funct3) {//add imediate
   int cur = 0;
@@ -124,56 +118,56 @@ int ADD (int Rd, int Rs1, int Rs2, int Funct3) { //add Rs1 to Rs2
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 }
-int SUB (int Rd, int Rs1, int Rs2, int funct3){//subtraction rs1- rs2
+int SUB (int Rd, int Rs1, int Rs2, int Funct3){//subtraction rs1- rs2
   int cur = 0;
   cur = CURRENT_STATE.REGS[Rs1]- CURRENT_STATE.REGS[rs2];
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 }
-int XOR (int Rd, int Rs1, int Rs2, int funct3){//xor
+int XOR (int Rd, int Rs1, int Rs2, int Funct3){//xor
   int cur = 0;
   cur = CURRENT_STATE.REGS[Rs1] ^ CURRENT_STATE.REGS[rs2];
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 }
-int OR (int Rd, int Rs1, int Rs2, int funct3){//or
+int OR (int Rd, int Rs1, int Rs2, int Funct3){//or
   int cur = 0;
   cur = CURRENT_STATE.REGS[0] | CURRENT_STATE.REGS[1];
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 }
-int AND (int Rd, int Rs1, int Rs2, int funct3){//and 
+int AND (int Rd, int Rs1, int Rs2, int Funct3){//and 
   int cur = 0;
   cur = CURRENT_STATE.REGS[0] & CURRENT_STATE.REGS[1];
   NEXT_STATE.REGS
 } 
-int SLL (int Rd, int Rs1, int Rs2, int funct3)//shift left logical
+int SLL (int Rd, int Rs1, int Rs2, int Funct3)//shift left logical
 {
   int cur = 0;
   cur = CURRENT_STATE.REGS[Rs1] << (CURRENT_STATE.REGS[Rs2]);
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 }
-int SRL (int Rd, int Rs1, int Rs2, int funct3){//shift right logical
+int SRL (int Rd, int Rs1, int Rs2, int Funct3){//shift right logical
   int cur = 0;
   cur = CURRENT_STATE.REGS[Rs1] >> (CURRENT_STATE.REGS[Rs2]);
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 
 }
-int SRA (int Rd, int Rs1, int Rs2, int funct3){ //shift right arith*
+int SRA (int Rd, int Rs1, int Rs2, int Funct3){ //shift right arith*
   int cur = 0;
   cur = CURRENT_STATE.REGS[Rs1] >> (CURRENT_STATE.REGS[Rs]);
   NEXT_STATE.REGS[Rd] = SIGNEXT(cur, 12);
   return 0;
 }
-int SLT (int Rd, int Rs1, int Rs2, int funct3){//set less than 
+int SLT (int Rd, int Rs1, int Rs2, int Funct3){//set less than 
   int cur = 0;
   cur = (CURRENT_STATE.REGS[Rs1] < (CURRENT_STATE.REGS[Rs2])) ? 1 : 0;
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 } 
-int SLTU (int Rd, int Rs1, int Rs2, int funct3){//set less than (u)
+int SLTU (int Rd, int Rs1, int Rs2, int Funct3){//set less than (u)
   int cur = 0;
   cur = (CURRENT_STATE.REGS[Rs1] < (CURRENT_STATE.REGS[Rs2]))? 1 : 0;
   NEXT_STATE.REGS[Rd] = SIGNEXT(cur, 12);
@@ -199,30 +193,56 @@ int BNE (int Rs1, int Rs2, int Imm, int Funct3) { //branch not equal !=
 int BLT (int Rs1, int Rs2, int Imm, int Funct3){//branch <
   int cur = 0;
   Imm = Imm << 1;
-  if(CURRENT_STATE.REGS[Rs1] < CURRENT_STATE.REGS[Rs2]);
+  if(CURRENT_STATE.REGS[Rs1] < CURRENT_STATE.REGS[Rs2])
     NEXT_STATE.PC = (CURRENT_STATE.PC + 4) + (SIGNEXT(Imm,13));
   return 0;
 }
 
 int BGE (int Rs1, int Rs2, int Imm, int Funct3){ //branch <=
-  
+  int cur = 0;
+  Imm = Imm << 1;
+  if(CURRENT_STATE.REGS[Rs1] <= CURRENT_STATE.REGS[Rs2])
+    NEXT_STATE.PC = (CURRENT_STATE.PC + 4) + (SIGNEXT(Imm,13));
+  return 0;
+
 }
 
 int BLTU (int Rs1, int Rs2, int Imm, int Funct3){ // branch < u 
-
+  int cur = 0;
+  Imm = Imm << 1;
+  if(CURRENT_STATE.REGS[Rs1] < CURRENT_STATE.REGS[Rs2])
+    NEXT_STATE.PC = (CURRENT_STATE.PC + 4) + (SIGNEXT(Imm,13));
+  return 0;
 }
 
 int BGEU (int Rs1, int Rs2, int Imm, int Funct3){ // branch >= u
-
+  int cur = 0;
+  Imm = Imm << 1;
+  if(CURRENT_STATE.REGS[Rs1] >= CURRENT_STATE.REGS[Rs2])
+    NEXT_STATE.PC = (CURRENT_STATE.PC + 4) + (SIGNEXT(Imm,13));
+    return 0;
 
 }
 
 
 // I instruction
-int JALR (char* i_);
+int JALR (int Rd, int Rs1, int Imm, int Funct3){
+  int cur = 0;
+  cur = CURRENT_STATE.PC + 4;
+  Rd = cur;
+  NEXT_STATE.PC = Rs1 + Imm;
+  return 0;
+}
 
 // J instruction
-int JAL (char* i_);
+int JAL (int Rd, int Rs1, int Rs2,  int Imm, int Funct3){
+  int cur = 0;
+  cur = CURRENT_STATE.PC + 4;
+  Rd = cur;
+  NEXT_STATE.PC = Imm;
+  return 0;
+}
+
 
 int ECALL (char* i_){return 0;}
 
