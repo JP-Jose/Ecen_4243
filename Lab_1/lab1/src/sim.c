@@ -67,7 +67,7 @@ int r_process(char* i_) {
   d_opcode[6] = i_[31-0];
   d_opcode[7] = '\0';
   char rs1[6]; rs1[5] = '\0';		   
-  char rs2[6]; rs2[5] = '\0';
+  char rs2[6]; rs2[5] = '\0'; // create rs2 that stores 6 chars iniciess 0 to 5
   char rd[6]; rd[5] = '\0';
   char funct3[4]; funct3[3] = '\0';
   for(int i = 0; i < 5; i++) {
@@ -88,14 +88,62 @@ int r_process(char* i_) {
 
   /* Example - use and replicate */
   if(!strcmp(d_opcode,"0110011")) {
-    printf("--- This is an ADD instruction. \n");
-    ADD(Rd, Rs1, Rs2, Funct3);
-    return 0;
+    switch (funct3)
+    {
+    case 0x0 /*add */:
+      if(!strcmp(d_opcode,"0100000")){
+        printf("this is the sub instruction\n");
+        SUB(Rd, Rs1, Rs2, Funct3);
+        break;
+      }
+      else{
+        printf("--- This is an ADD instruction. \n");
+        ADD(Rd, Rs1, Rs2, Funct3);
+        break;
+      }
+    case 0x1 /* shift left logical */:
+      printf("--- This is a SLL instruction. \n");
+      SLL(Rd, Rs1, Rs2, Funct3);
+      break;
+    case 0x2 /* set less than */:
+      printf("--- This is a Set less than instruction. \n");
+      SLT(Rd, Rs1, Rs2, Funct3);      
+      break;
+      
+    case 0x3 /* set less than (u) */:
+      printf("--- This is a Set less than (u) instruction. \n");
+      SLTU(Rd, Rs1, Rs2, Funct3);    
+      break;
+    case 0x4 /* XOR */:
+      printf("--- This is a XOR instruction. \n");
+      XOR(Rd, Rs1, Rs2, Funct3);
+      break;
+    case 0x5 /* shift right logical */:
+      if(!strcmp(Funct7, "0100000")){
+      printf("--- This is a Shift Right Arith instruction. \n");
+      SRL(Rd, Rs1, Rs2, Funct3);
+      break;
+      }
+      else if{
+        printf("--- This is an Shift right logical instruction. \n");
+        SRL(Rd, Rs1, Rs2, Funct3);
+        break;
+      } 
+    case 0x6 /* OR */:
+      printf("--- This is a OR instruction. \n");
+      OR(Rd, Rs1, Rs2, Funct3);
+      break;
+    case 0x7 /* AND */:
+      printf("--- This is a AND instruction. \n");
+      AND(Rd, Rs1, Rs2, Funct3);
+
+    default:
+      printf("--- This is an unknown instruction. \n");
+      break;
+    }
+   
   }
 
-  /* Add other data instructions here */ 
-
-  return 1;	
 }
 
 int i_process(char* i_) {
@@ -135,11 +183,52 @@ int i_process(char* i_) {
 
   /* This is an Add Immediate Instruciton */
   if(!strcmp(d_opcode,"0010011")) {
-    printf("--- This is an ADDI instruction. \n");
-    ADDI(Rd, Rs1, Imm, Funct3);
-    return 0;
+    switch (Funct3)
+    {
+    case 0X0 /* ADD Imm */:
+      printf("--- This is an ADD Immediate instruction. \n");
+      ADDI(Rd, Rs1, Imm, Funct3);
+      break;s
+    case 0X1 /* shift left logical Imm */:
+      printf("--- This is a shift left logical immediate instruction. \n");
+      SSLI(imm, Rs1, Imm, Funct3); 
+      break;
+    case 0X2 /* set less than Imm */:
+      printf("--- This is a set less than immediate instruction. \n");
+      SLTI(Rd,Rs1,Imm,Funct3);
+      break;
+    case 0X3 /* set less than Imm (u) */:
+      printf("--- This is a set less than immediate (u) instruction. \n");
+      SLTIU(Rd,Rs1,Imm,Funct3);
+      break;
+    case 0x4 /* XOR Imm */:
+      printf("--- This is a XOR immediate instruction. \n");
+      XORI(Rd,Rs1,Imm,Funct3);
+      break;
+    case 0X5 /* Shift right logical */:
+      if(!strcmp(Funct7, "0100000")){
+        printf("--- This is a shift right Arith immediate instruction. \n");
+        SRAI(Rd,Rs1,Imm,Funct3);
+        break;
+      }
+      else{
+        printf("--- This is a shift right logical immediate instruction. \n");
+        SRLI(Rd,Rs1,Imm,Funct3);
+        break;
+      }
+    case 0x6 /*xOR Immediate*/:
+      printf("--- This is an XOR immediate instruction. \n");
+      XORI(Rd,Rs1,Imm,Funct3);
+      break;
+    case 0X7 /* AND Imm */:
+      printf("--- This is an AND immediate instruction. \n");
+      ANDI(Rd,Rs1,Imm,Funct3);
+      break;
+    default:
+      printf("--- This is an invalid instruction. R-type error \n");
+      break;
+    }
   }	  
-
   return 1;	
 }
 
@@ -191,14 +280,42 @@ int b_process(char* i_) {
   printf("\n");    
 
   /* Add branch instructions here */
-
-  /* This is an Add Immediate Instruciton */
-  if(!strcmp(d_opcode,"1100011")) {
-    printf("--- This is an BNE instruction. \n");
+  if(!strcmp(d_opcode,"1100011")) { // B-type branch
+    switch (Funct3)
+    {
+    case 0x0 /* Banch if = */:
+      printf("--- This is a BRANCH IF = instruction. \n");
+      BEQ(Rs1,Rs2,Imm,Funct3);
+      break;
+    case 0x1 /* Banch != */:
+      printf("--- This is a BRANCH != instruction. \n");
+      BNE(Rs1,Rs2,Imm,Funct3);
+      break;
+    case 0x4 /* Banch if less than */:
+      printf("--- This is a BRANCH less than instruction. \n");
+      BLT(Rs1,Rs2,Imm,Funct3);
+      break;
+    case 0x5 /* Banch if greater than or = */:
+      printf("--- This is a BRANCH greater than instruction. \n");
+      BGE(Rs1,Rs2,Imm,Funct3);
+      break;
+    case 0x6 /* Banch if less than (u) */:
+      printf("--- This is a BRANCH less than or equal instruction. \n");
+      BLTU(Rs1,Rs2,Imm,Funct3);
+      break;
+      case 0x7 /* Banch if greater than or equal (u) */:
+      printf("--- This is a BRANCH greater than or equal (u) instruction. \n");
+      BGEU(Rs1,Rs2,Imm,Funct3);
+      break;
+    default:
+      printf("--- Unknown instruction. \n");
+      break;
+    }
+    printf("--- This is an BNE instruction. B-type error \n");
     BNE(Rs1, Rs2, Imm, Funct3);
     return 0;
   }	    
-
+  
   return 1;
 
 }
