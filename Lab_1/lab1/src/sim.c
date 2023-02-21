@@ -401,8 +401,58 @@ int j_process(char* i_) {
   /* Add jump instructions here */ 
 
   /* Add store instructions here */ 
+    char d_opcode[8];
+    d_opcode[0] = i_[31-6];
+    d_opcode[1] = i_[31-5];
+    d_opcode[2] = i_[31-4];
+    d_opcode[3] = i_[31-3];
+    d_opcode[4] = i_[31-2];
+    d_opcode[5] = i_[31-1];
+    d_opcode[6] = i_[31-0];
+    d_opcode[7] = '\0';
 
-  return 1;
+
+    char imm[21];
+    char rd[6];
+    rd[5] = '\0';
+
+    imm[0] = i_[31-31];
+    imm[1] = i_[31-30];
+    imm[2] = i_[31-29];
+    imm[3] = i_[31-28];
+    imm[4] = i_[31-27];
+    imm[5] = i_[31-26];
+    imm[6] = i_[31-25];
+    imm[7] = i_[31-24];
+    imm[8] = i_[31-23];
+    imm[9] = i_[31-22];
+    imm[10] = i_[31-21];
+    imm[11] = i_[31-20];
+    imm[12] = i_[31-19];
+    imm[13] = i_[31-18];
+    imm[14] = i_[31-17];
+    imm[15] = i_[31-16];
+    imm[16] = i_[31-15];
+    imm[17] = i_[31-14];
+    imm[18] = i_[31-13];
+    imm[19] = i_[31-12];
+    imm[20] = '\0';
+
+    for(int i = 0; i < 3; i++) {
+        rd[i] = i_[31-11+i];
+    }
+
+    int Rd = bchar_to_int(rd);
+    int Imm = bchar_to_int(imm);
+
+    /* Example - use and replicate */
+    if(!strcmp(d_opcode,"0010111")) {
+        printf("--- This is an AUIPC instruction. \n");
+        AUIPC(Rd, Imm);
+    }else if(!strcmp(d_opcode,"0110111")){
+        printf("--- This is an LUI instruciton. \n");
+        LUI(Rd, Imm);
+    }
 
 }
 
