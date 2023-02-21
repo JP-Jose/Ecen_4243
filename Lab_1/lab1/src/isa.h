@@ -25,25 +25,25 @@
 // I Instructions
 int ADDI (int Rd, int Rs1, int Imm, int Funct3) {//add imediate
   int cur = 0;
-  cur = CURRENT_STATE.REGS[Rs1] + SIGNEXT(Imm);
+  cur = CURRENT_STATE.REGS[Rs1] + Imm;
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 }
 int XORI (int Rd, int Rs1, int Imm, int Funct3){ //xor immediate
   int cur = 0;
-  cur = CURRENT_STATE.REGS[Rs1] ^ SIGNEXT(Imm);
+  cur = CURRENT_STATE.REGS[Rs1] ^ Imm;
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 }
 int ORI (int Rd, int Rs1, int Imm, int Funct3){//or immediate
   int cur = 0;
-  cur = CURRENT_STATE.REGS[Rs1] | SIGNEXT(Imm);
+  cur = CURRENT_STATE.REGS[Rs1] | Imm;
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 }
 int ANDI (int Rd, int Rs1, int Imm, int Funct3){// and immediate
   int cur = 0;
-  cur = CURRENT_STATE.REGS[Rs1] & SIGNEXT(Imm);
+  cur = CURRENT_STATE.REGS[Rs1] & Imm;
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 }
@@ -120,13 +120,13 @@ int ADD (int Rd, int Rs1, int Rs2, int Funct3) { //add Rs1 to Rs2
 }
 int SUB (int Rd, int Rs1, int Rs2, int Funct3){//subtraction rs1- rs2
   int cur = 0;
-  cur = CURRENT_STATE.REGS[Rs1]- CURRENT_STATE.REGS[rs2];
+  cur = CURRENT_STATE.REGS[Rs1]- CURRENT_STATE.REGS[Rs2];
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 }
 int XOR (int Rd, int Rs1, int Rs2, int Funct3){//xor
   int cur = 0;
-  cur = CURRENT_STATE.REGS[Rs1] ^ CURRENT_STATE.REGS[rs2];
+  cur = CURRENT_STATE.REGS[Rs1] ^ CURRENT_STATE.REGS[Rs2];
   NEXT_STATE.REGS[Rd] = cur;
   return 0;
 }
@@ -139,7 +139,7 @@ int OR (int Rd, int Rs1, int Rs2, int Funct3){//or
 int AND (int Rd, int Rs1, int Rs2, int Funct3){//and 
   int cur = 0;
   cur = CURRENT_STATE.REGS[0] & CURRENT_STATE.REGS[1];
-  NEXT_STATE.REGS
+  NEXT_STATE.REGS[Rd] = cur;
 } 
 int SLL (int Rd, int Rs1, int Rs2, int Funct3)//shift left logical
 {
@@ -157,7 +157,7 @@ int SRL (int Rd, int Rs1, int Rs2, int Funct3){//shift right logical
 }
 int SRA (int Rd, int Rs1, int Rs2, int Funct3){ //shift right arith*
   int cur = 0;
-  cur = CURRENT_STATE.REGS[Rs1] >> (CURRENT_STATE.REGS[Rs]);
+  cur = CURRENT_STATE.REGS[Rs1] >> (CURRENT_STATE.REGS[Rs2]);
   NEXT_STATE.REGS[Rd] = SIGNEXT(cur, 12);
   return 0;
 }
