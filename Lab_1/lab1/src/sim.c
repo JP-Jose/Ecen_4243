@@ -197,9 +197,9 @@ int i_process(char* i_) {
       break;
 
     case 0X1 /* shift left logical Imm */:
-      if(!strcmp(Imm, "0000000")){
+      if(Imm ==0000000){
         printf("--- This is a Load half instruction. \n");
-        lh((Rd, Rs1, Imm, Funct3));
+       // LH(Rd, Rs1, Imm, Funct3);
         break;
       }
       else{
@@ -221,7 +221,7 @@ int i_process(char* i_) {
       XORI(Rd,Rs1,Imm,Funct3);
       break;
     case 0X5 /* Shift right logical */:
-      if(!strcmp(Imm, "0000000")){
+      if(Imm == 0000000){
         printf("--- This is a shift right Arith immediate instruction. \n");
         SRAI(Rd,Rs1,Imm,Funct3);
         break;
