@@ -101,6 +101,7 @@ int LUI (int Rd, int Imm ){//load upper imm
 
 // S Instruction
 int SB (int Rd, int Rs1, int Rs2, int Funct3){// store byte
+
   return 0;
 }
 int SH (int Rd, int Rs1, int Rs2, int Funct3){ //store half

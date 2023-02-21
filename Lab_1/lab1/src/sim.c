@@ -473,8 +473,7 @@ int u_process(char* i_) {
 
 
     char imm[21];
-    char rd[6];
-    rd[5] = '\0';
+    char rd[6]; rd[5] = '\0';
 
     imm[0] = i_[31-31];
     imm[1] = i_[31-30];
